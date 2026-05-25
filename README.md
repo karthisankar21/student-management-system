@@ -20,14 +20,12 @@
 
 ## 📂 Project Structure
 
-<<<<<<< HEAD
 student-modern-app/
 │── api/
 │── config/
 │── frontend/
 │── assets/
 
-=======
 ---
 
 ## ⚙️ Setup Instructions
