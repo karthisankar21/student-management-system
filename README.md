@@ -25,7 +25,6 @@ student-modern-app/
 │── config/
 │── frontend/
 │── assets/
-
 ---
 
 ## ⚙️ Setup Instructions
