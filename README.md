@@ -62,7 +62,7 @@ CREATE TABLE students (
 ```
 
 ## 📌 API Endpoints
-GET /api/students.php
+`GET /api/students.php
 POST /api/students.php
 PUT /api/students.php
 DELETE /api/students.php
