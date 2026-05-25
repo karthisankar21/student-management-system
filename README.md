@@ -59,7 +59,7 @@ CREATE TABLE students (
     email VARCHAR(100),
     course VARCHAR(100)
 );
-
+```
 
 ## 📌 API Endpoints
 GET /api/students.php
@@ -67,58 +67,12 @@ POST /api/students.php
 PUT /api/students.php
 DELETE /api/students.php
 
+---
 
 ## 👨‍💻 Author
 Sankara Subramanian
 
 ---
-
-# 🚀 STEP 4 — PUSH TO GITHUB
-
-## 1. Initialize git
-
-Open terminal in project folder:
-
-```bash
-git init
-```
-
-## 2. Add files
-```bash 
-git add .
-```
-
-## 3. Commit
-```bash 
-git commit -m "Student Management System with REST API + Frontend"
-```
-
-## 4. Create GitHub repo
-```bash
-Go to:
-👉 https://github.com/new
-```
-
-## Create repo:
-
-student-management-system
-
-## 5. Link repo
-```bash 
-git remote add origin https://github.com/YOUR_USERNAME/student-management-system.git
-```
-
-## 6. Push
-```bash 
-git branch -M main
-git push -u origin main
-```
-
-## 🌍 FINAL RESULT
-Now anyone can:
-```bash
-git clone your-repo
-```
 
 ## Docker-compose-setup for MYSQL_DB Connection
 # Step 1: Start database
