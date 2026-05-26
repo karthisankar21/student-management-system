@@ -98,16 +98,10 @@ function editStudent(id, name, email, course) {
     document.getElementById("email").value = email;
     document.getElementById("course").value = course;
 
+    // Chnage title to "Update Student"
+    document.getElementById("modalTitle").innerText = "Update Student";
+
     document.getElementById("studentModal").style.display = "block";
-}
-
-
-// Clear search
-function clearSearch() {
-
-    document.getElementById("search").value = "";
-
-    loadStudents();
 }
 
 
@@ -115,8 +109,18 @@ function clearSearch() {
 let editId = null;
 
 function openModal() {
-    document.getElementById("studentModal").style.display = "block";
+    
     editId = null;
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("course").value = "";
+
+    // 🔥 reset title
+    document.getElementById("modalTitle").innerText = "Add Student";
+
+    document.getElementById("studentModal").style.display = "block";
+
 }
 
 function closeModal() {
