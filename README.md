@@ -19,7 +19,7 @@
 ---
 
 ## 📂 Project Structure
-``bash
+```bash
 student-modern-app/
 │── api/
 │── config/
