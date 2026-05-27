@@ -33,17 +33,24 @@ student-modern-app/
 
 ## ⚙️ Setup Instructions
 
-### 1. Clone project
+### Step 1. Clone project
 
 git clone https://github.com/your-username/student-app.git
 
 
-### 2. Start PHP server
+### Step 2: Docker-compose-setup for MYSQL_DB Connection
 
+# Start database
+```bash
+docker-compose up -d
+```
+
+# Start PHP server
+```bash
 php -S localhost:8000
+```
 
-
-### 3. Open browser
+### Step 3: Open browser
 
 http://localhost:8000/frontend/index.html
 
@@ -75,22 +82,6 @@ CREATE TABLE students (
 Sankara Subramanian
 
 ---
-
-## Docker-compose-setup for MYSQL_DB Connection
-# Step 1: Start database
-```bash
-docker-compose up -d
-```
-
-# Step 2: Start PHP server
-```bash
-php -S localhost:8000
-```
-
-# Step 3: Open app
-```bash
-http://localhost:8000/frontend/index.html
-```
 
 # Single click to start and stop the project in Windows 
 ```bash
