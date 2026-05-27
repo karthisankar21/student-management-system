@@ -19,12 +19,13 @@
 ---
 
 ## 📂 Project Structure
-
+``bash
 student-modern-app/
 │── api/
 │── config/
 │── frontend/
 │── assets/
+```
 ---
 
 ## ⚙️ Setup Instructions
