@@ -88,10 +88,16 @@ Sankara Subramanian
 ---
 
 # Single click to start and stop the project in Windows 
-```bash
 **Start for windows**
-run the start.bat
+***Run start.bat - Start the project automatically***
+```bash
+start.bat
+
+```
 
 **Stop for windows**
-run the stop.bat
+***Run stop.bat - Stop the project automatically***
+```bash
+stop.bat
+
 ```
