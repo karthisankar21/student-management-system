@@ -88,7 +88,7 @@ Sankara Subramanian
 ---
 
 # Single click to start and stop the project in Windows 
-### For windows ###
+### For windows
 **Run start.bat - Start the project automatically**
 ```bash
 start.bat
