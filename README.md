@@ -25,6 +25,9 @@ student-modern-app/
 │── config/
 │── frontend/
 │── assets/
+|── docker-compose.yml
+|── start.bat
+|── stop.bat
 ```
 ---
 
