@@ -88,3 +88,11 @@ php -S localhost:8000
 http://localhost:8000/frontend/index.html
 ```
 
+# Single click to start and stop the project in Windows 
+```bash
+**Start for windows**
+run the start.bat
+
+**Stop for windows**
+run the stop.bat
+```
