@@ -41,13 +41,13 @@ git clone https://github.com/[your-username]/student-management-system.git
 
 ### Step 2: Docker-compose-setup for MYSQL_DB Connection
 
-# Start database
+#### Start database
 ```bash
 docker-compose up -d
 
 ```
 
-# Start PHP server
+#### Start PHP server
 ```bash
 php -S localhost:8000
 
