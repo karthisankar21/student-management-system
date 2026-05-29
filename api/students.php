@@ -1,7 +1,7 @@
 <?php 
 header("Content-Type: application/json");
 
-include "../config/db.php";
+include "../config/student_db.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 

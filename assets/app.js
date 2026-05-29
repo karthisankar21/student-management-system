@@ -159,5 +159,14 @@ function saveStudent() {
     });
 }
 
+function logout() {
+    fetch("../login/login-api/logout.php", {
+        method: "POST"
+    })
+        .then(() => {
+            window.location.href = "login.html";
+        });
+}
+
 // initial load
 loadStudents();

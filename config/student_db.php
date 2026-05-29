@@ -1,15 +1,17 @@
 <?php
 
 $conn = new mysqli(
-    "localhost",
+    "127.0.0.1",
     "root",
     "root",
-    "student_db"
+    "student_db",
+    3307
 );
+
 
 if ($conn->connect_error) {
     die(json_encode([
         "status" => "error",
-        "message" => "DB Connection failed"
+        "message" => "Student_DB Connection failed"
     ]));
 }

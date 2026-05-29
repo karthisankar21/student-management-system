@@ -7,4 +7,5 @@ taskkill /F /IM "php.exe"
 
 echo project stopped.
 
-pause
+echo stop the cmd terminal.
+taskkill /F /IM "cmd.exe"
