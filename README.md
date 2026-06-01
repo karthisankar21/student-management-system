@@ -348,7 +348,7 @@ This project is open source and available under the MIT License.
 
 ## 👨‍💻 Author
 
-**Karthis Sankar**
+**Karthi Sankar**
 
 - GitHub: [@karthisankar21](https://github.com/karthisankar21)
 - Project: [student-management-system](https://github.com/karthisankar21/student-management-system)
@@ -365,5 +365,5 @@ For issues, questions, or suggestions:
 
 ---
 
-**Last Updated:** 2024
+**Last Updated:** 2025
 **Version:** 1.0.0
