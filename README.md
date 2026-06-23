@@ -67,9 +67,10 @@ student-management-modern/
 ├── api/                        # Student management endpoints
 │   └── students.php            # GET,POST,PUT,DELETE - RESTAPI Methods Calling.
 │   ├── login.php               # POST - User login
-|   ├── register.php            # POST - User registration
+│   ├── register.php            # POST - User registration
 │   ├── logout.php              # POST - User logout
-|   └── check-login.php         # GET - Check session status                           
+│   ├── check-register.php      # GET - Check register user status in DB
+│   └── check-login.php         # GET - Check session status                           
 │                 
 │       
 │
