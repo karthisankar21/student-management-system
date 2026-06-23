@@ -13,6 +13,6 @@ echo waiting for browser to open...
 timeout /t 2
 
 echo opening browser...
-start http://localhost:8000/frontend/register.html
+start http://localhost:8000/frontend/login.html
 
 pause

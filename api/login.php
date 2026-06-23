@@ -4,7 +4,7 @@ session_start();
 
 header("Content-Type: application/json");
 
-include "../../config/auth_db.php";
+include "../config/auth_db.php";
 
 $data = json_decode(file_get_contents("php://input"), true);
 

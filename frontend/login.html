@@ -21,7 +21,7 @@
 // Check already logged in
 function checkAlreadyLogin() {
 
-    fetch("../login/login-api/check-login.php")
+    fetch("../api/check-login.php")
     .then(res => res.json())
     .then(data => {
 
@@ -39,7 +39,7 @@ checkAlreadyLogin();
 // login
 function login() {
 
-    fetch("../login/login-api/login.php", {
+    fetch("../api/login.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

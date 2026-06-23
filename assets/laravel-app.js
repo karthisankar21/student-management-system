@@ -1,17 +1,35 @@
+const API_URL = "http://127.0.0.1:8000/api";
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "login.html";
+}
+
 
 // Load students and search students
 function loadStudents() {
-
     let search = document.getElementById("search").value;
 
-    fetch("../api/students.php?search=" + search)
+    fetch(`${API_URL}/students`, {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
     .then(res => res.json())
-    .then(data => {
+    .then(response => {
 
+        let data = response.data;   
         let table = "";
 
-        if (data.length === 0) {
+        if (search) {
+            data = data.filter(student =>
+                student.name.toLowerCase().includes(search.toLowerCase()) ||
+                student.email.toLowerCase().includes(search.toLowerCase()) ||
+                student.course.toLowerCase().includes(search.toLowerCase())
+            );
+        }
 
+        if (data.length === 0) {
             table = `
                 <tr>
                     <td colspan="5" class="text-center text-muted">
@@ -22,7 +40,6 @@ function loadStudents() {
         }
 
         data.forEach(student => {
-
             table += `
             <tr>
                 <td>${student.id}</td>
@@ -31,56 +48,49 @@ function loadStudents() {
                 <td>${student.course}</td>
                 <td>
                     <button onclick="editStudent(${student.id}, '${student.name}', '${student.email}', '${student.course}')"
-                        class="btn btn-warning btn-sm">
-                        Edit
-                    </button>
+                        class="btn btn-warning btn-sm">Edit</button>
 
                     <button onclick="deleteStudent(${student.id})"
-                        class="btn btn-danger btn-sm">
-                        Delete
-                    </button>
+                        class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
             `;
         });
-        
+
         document.getElementById("studentTable").innerHTML = table;
-        
-        document.getElementById("totalStudents").innerText = data.length;
+        document.getElementById("totalStudents").innerText = response.total;
     });
 }
 
-// Add student
-function addStudent() {
+// // Add student
+// function addStudent() {
 
-    let data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        course: document.getElementById("course").value
-    };
+//     let data = {
+//         name: document.getElementById("name").value,
+//         email: document.getElementById("email").value,
+//         course: document.getElementById("course").value
+//     };
 
-    fetch("../api/students.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(() => {
-        loadStudents();
-    });
-}
+//     fetch("http://localhost/student-management-laravel/api/students", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(data)
+//     })
+//     .then(res => res.json())
+//     .then(() => {
+//         loadStudents();
+//     });
+// }
 
 // Delete student
 function deleteStudent(id) {
-
-    fetch("../api/students.php", {
+    fetch(`${API_URL}/students/${id}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ id: id })
+            "Authorization": "Bearer " + token
+        }
     })
     .then(res => res.json())
     .then(() => {
@@ -138,16 +148,17 @@ function saveStudent() {
     };
 
     let method = "POST";
-    let url = "../api/students.php";
+    let url = `${API_URL}/students`;
 
     if (editId) {
         method = "PUT";
-        data.id = editId;
+        url = `${API_URL}/students/${editId}`;
     }
 
     fetch(url, {
         method: method,
         headers: {
+            "Authorization": "Bearer " + token,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
@@ -159,13 +170,20 @@ function saveStudent() {
     });
 }
 
+
 function logout() {
-    fetch("../api/logout.php", {
-        method: "POST"
+    fetch(`${API_URL}/logout`, {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token,
+            "Accept": "application/json"
+        }
     })
-        .then(() => {
-            window.location.href = "login.html";
-        });
+    .then(res => {
+        console.log(res.status);
+        return res.json();
+    })
+    .then(data => console.log(data));
 }
 
 // initial load
