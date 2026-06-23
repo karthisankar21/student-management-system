@@ -62,19 +62,16 @@ student-management-modern/
 │   ├── login.html              # Login page
 │   └── register.html           # Registration page
 │
-├── login/
-│   └── login-api/              # Authentication endpoints
-│       ├── login.php           # POST - User login
-│       ├── register.php        # POST - User registration
-│       ├── logout.php          # POST - User logout
-│       └── check-login.php     # GET - Check session status
+│   
 │
-├── api/
-│   └── students.php            # Student management endpoints
-│                               # GET - Fetch all/search students
-│                               # POST - Add new student
-│                               # PUT - Update student
-│                               # DELETE - Remove student
+├── api/                        # Student management endpoints
+│   └── students.php            # GET,POST,PUT,DELETE - RESTAPI Methods Calling.
+│   ├── login.php               # POST - User login
+|   ├── register.php            # POST - User registration
+│   ├── logout.php              # POST - User logout
+|   └── check-login.php         # GET - Check session status                           
+│                 
+│       
 │
 ├── config/                     # Database configurations
 │   ├── auth_db.php            # Auth database connection (port 3308)
