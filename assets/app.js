@@ -159,6 +159,30 @@ function saveStudent() {
     });
 }
 
+
+//Register Users checks
+function register() {
+    let email = document.getElementById("email").value;
+
+    fetch("../api/check-register.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "exists") {
+            alert("Email already registered!");
+        } else {
+            submitRegister();
+        }
+    });
+}
+
+
+//logout
 function logout() {
     fetch("../api/logout.php", {
         method: "POST"
@@ -167,6 +191,8 @@ function logout() {
             window.location.href = "login.html";
         });
 }
+
+
 
 // initial load
 loadStudents();

@@ -2,6 +2,17 @@ version: "3.8"
 
 services:
 
+  core_php:
+    build: .
+    container_name: core_php_app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - student_db
+      - auth_db
+
   student_db:
     image: mysql:8
     container_name: student_db

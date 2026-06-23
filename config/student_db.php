@@ -1,12 +1,9 @@
 <?php
 
-$conn = new mysqli(
-    "127.0.0.1",
-    "root",
-    "root",
-    "student_db",
-    3307
-);
+$host = getenv('DB_HOST') ?: 'student_db';
+$port = getenv('DB_PORT') ?: 3306;
+
+$conn = new mysqli($host, "root", "root", "student_db", $port);
 
 
 if ($conn->connect_error) {

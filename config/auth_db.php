@@ -1,7 +1,9 @@
 <?php
 
-$conn = new mysqli("127.0.0.1", "root", "root", "auth_db", 3308);
+$host = getenv('DB_HOST') ?: 'auth_db';
+$port = getenv('DB_PORT') ?: 3306;
 
+$conn = new mysqli($host, "root", "root", "auth_db", $port);
 
 if ($conn->connect_error) {
     die(json_encode([
