@@ -1,0 +1,37 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f4f4;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+    margin-top:50px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+}
+
+.card{
+    background:white;
+    width:300px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.card ul{
+    text-align:left;
+}
+
+button{
+    padding:12px 25px;
+    font-size:16px;
+    cursor:pointer;
+}

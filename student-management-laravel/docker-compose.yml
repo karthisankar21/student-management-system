@@ -1,0 +1,17 @@
+version : "3.8"
+
+services:
+  laravel:
+    build: .
+    container_name: laravel-app
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/var/www
+    networks:
+      - student-network
+
+networks:
+  student-network:
+    external: true
+    name: core-php_default
