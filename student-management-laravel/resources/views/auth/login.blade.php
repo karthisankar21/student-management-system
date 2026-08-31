@@ -12,13 +12,15 @@
     <form action="/login" method="POST">
         @csrf
 
-        @if(session('warning'))
-        <script>
-            alert("{{ session('warning') }}");
-        </script>
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         @endif
+        
 
-        <h2>Login</h2>
+        <h2>Laravel Login</h2>
 
         <input
             id="email"
@@ -45,6 +47,7 @@
 
     <a href="/register" class="btn btn-secondary">Register</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

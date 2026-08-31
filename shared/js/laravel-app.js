@@ -67,12 +67,40 @@ async function loadStudents() {
                             Delete
                         </button>
                     </td>
+                    <td>
+                        <button onclick="payStudent(${student.id})" class="btn btn-secondary btn-sm">
+                            Pay
+                        </button>
+                    </td>
                 </tr>`;
             });
 
             document.getElementById("studentTable").innerHTML = table;
             document.getElementById("totalStudents").innerText = data.length;
         });
+}
+
+//search students
+function searchStudents() {
+
+    let search = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+
+        let text = row.innerText.toLowerCase();
+
+        row.style.display =
+            text.includes(search)
+            ? ""
+            : "none";
+
+    });
+
 }
 
 // Add student
@@ -95,7 +123,9 @@ function addStudent() {
         body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(() => loadStudents());
+        .then(() => {
+            location.reload();
+        });
 }
 
 // Delete student
@@ -118,7 +148,10 @@ function deleteStudent(id) {
 
     fetch(url, options)
         .then(res => res.json())
-        .then(() => loadStudents());
+        .then(() => {
+            location.reload();
+            
+         });
 }
 
 
@@ -211,7 +244,8 @@ function saveStudent() {
     .then(response => {
         console.log("Save response:", response);
         closeModal();
-        loadStudents();
+        // loadStudents();
+        location.reload();
     });
 }   
 
@@ -251,8 +285,10 @@ function logout() {
 // initial load async function
 async function init() {
     await detectBackend();
-    loadStudents();
-    
+        
+    if (!IS_LARAVEL) {
+        loadStudents();
+    }
     // Auto-refresh every 5 seconds
     // setInterval(loadStudents, 5000);
 

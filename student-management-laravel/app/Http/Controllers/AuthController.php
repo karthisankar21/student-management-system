@@ -20,9 +20,17 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:auth_mysql.users,email',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:4',
         ]);
+
+        $existingUser = User::where('email', $credentials['email'])->first();
+
+        if ($existingUser) {
+            return back()
+                ->withInput()
+                ->with('error', 'This email is already registered. Please login or use another email.');
+        }
 
         $user = User::create([
             'name' => $credentials['name'],
@@ -30,9 +38,7 @@ class AuthController extends Controller
             'password' => Hash::make($credentials['password']),
         ]);
 
-        // Auth::login($user);
-
-        return redirect()->route('login');
+        return back()->with('success', 'Registration successful. Please login.');
     }
 
 
@@ -60,7 +66,7 @@ class AuthController extends Controller
             }
         }
 
-        return redirect('/register')->withErrors(['email' => 'Invalid email or password.']);
+        return back()->with('error', 'Invalid email or password.');
     }
 
     // Process Logout
