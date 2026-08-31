@@ -4,6 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/pay-student/{id}', [StudentController::class, 'PayStudent']);
+Route::get('/Check-pay-student/{id}', [StudentController::class, 'checkPayStudent']);
+
 
 // Guest routes
 Route::middleware('guest')->group(function () {
@@ -19,6 +22,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::resource('students', StudentController::class)->only(['index']);
-    
+
+    Route::get('/payment/{id}', [StudentController::class, 'Payment'])->name('payment');
+
     Route::post('/logout', [AuthController::class, 'logout']);
 });

@@ -10,9 +10,10 @@
 
 <body>
 
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    @if(session('warning'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ session('warning') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
 
@@ -48,7 +49,7 @@
                     </button>
                 </form>
 
-            </div><br>  
+            </div><br>
 
             <!-- Run on Core-PHP Backend -->
             <div>
@@ -64,7 +65,7 @@
                 <div class="col-md-3">
                     <div class="card shadow-sm p-3">
                         <h5>Total Students</h5>
-                        <h3 id="totalStudents">0</h3>
+                        <h3 id="totalStudents">{{$students->count()}}</h3>
                     </div>
                 </div>
             </div>
@@ -75,7 +76,7 @@
                 <span class="input-group-text">🔍</span>
                 <input type="text" id="search" class="form-control"
                     placeholder="Search students..."
-                    onkeyup="loadStudents()">
+                    onkeyup="searchStudents()">
             </div>
 
             <!-- ADD BUTTON -->
@@ -93,10 +94,45 @@
                         <th>Email</th>
                         <th>Course</th>
                         <th>Actions</th>
+                        <th>Pay</th>
                     </tr>
                 </thead>
 
-                <tbody id="studentTable"></tbody>
+                <!-- <tbody id="studentTable"></tbody> -->
+                <tbody>
+                    @foreach($students as $student)
+                    <tr>
+                        <td>{{ $student->id }}</td>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td>{{ $student->course }}</td>
+
+                        <td>
+
+                            <button
+                                onclick="editStudent(
+                                    '{{ $student->id }}',
+                                    '{{ $student->name }}',
+                                    '{{ $student->email }}',
+                                    '{{ $student->course }}'
+                                )"
+                                class="btn btn-warning">
+                                Edit
+                            </button>
+
+                            <button
+                                onclick="deleteStudent('{{ $student->id }}')"
+                                class="btn btn-danger">
+                                Delete
+                            </button>
+
+                        </td>
+                        <td>
+                            <a href="/payment/{{ $student->id }}" class="btn btn-info" target="_blank">Pay</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
 
             </table>
 
@@ -113,9 +149,18 @@
 
             <h4 id="modalTitle">Add Student</h4>
 
-            <input id="name" class="form-control mb-2" placeholder="Name">
-            <input id="email" class="form-control mb-2" placeholder="Email">
-            <input id="course" class="form-control mb-2" placeholder="Course">
+            <input id="name" class="form-control mb-2" placeholder="Name" required>
+            <input id="email" class="form-control mb-2" placeholder="Email" required>
+            <!-- <input id="course" class="form-control mb-2" placeholder="Course"> -->
+
+            <label for="course">Choose a course:</label>
+
+            <select name="course" id="course">
+                <option value="computer-science">Computer Science</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="physics">Physics</option>
+                <option value="commerce">Commerce</option>
+            </select><br><br>
 
             <button class="btn btn-success" onclick="saveStudent()">
                 Save

@@ -9,7 +9,21 @@
 
 <body class="container mt-5">
 
-    <h2>Register</h2>
+    <h2>Laravel Register</h2>
+
+    @if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
 
     <form action="/register" method="POST">
         @csrf
@@ -57,6 +71,8 @@
 
     <a href="/login" class="btn btn-secondary">Login</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>
